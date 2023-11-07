@@ -80,14 +80,14 @@ const styles = {
   // },
   cartIconContainer: {
     position: "relative",
-    marginRight: 35,
+    marginRight: 75,
   },
   cartCount: {
     background: "yellow",
     borderRadius: "50%",
     padding: "4px 8px",
     position: "absolute",
-    right: 0,
+    right: 4,
     top: -9,
   },
 };

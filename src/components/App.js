@@ -6,16 +6,21 @@ import { Navbar } from "./Navbar";
 import { Provider, useSelector } from "react-redux";
 import { store } from "../redux/store";
 import { alertSelector } from "../redux/reducers/alertReducer";
+import { useEffect } from "react";
+
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { Home } from "../pages/Home";
 
 export default function App() {
   const { message } = store.getState().alertReducer;
-
+  useEffect(() => {}, []);
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Navbar />,
       children: [
-        { index: true, element: <Login /> },
+        { index: true, element: <Home /> },
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
         // {

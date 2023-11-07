@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   displayName: "",
   uId: "",
   userEmail: "",
-  isLoggedIn: "",
+  isLoggedIn: false,
 };
 
 // define and export comments async thunk below
