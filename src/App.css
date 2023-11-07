@@ -1,3 +1,69 @@
 .App {
   text-align: center;
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.page {
+  padding: 20px;
+}
+
+.navbar {
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background-color: #afa9c4;
+  position: fixed;
+  justify-content: space-between;
+}
+.mainContent {
+  padding-top: 60px;
+}
+.navbar img {
+  height: 60%;
+  cursor: pointer;
+}
+
+nav {
+  margin-left: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  padding: 15px 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.alert {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: hsla(0, 0%, 39%, 0.2) 0px 2px 8px 0px;
+  background-color: hsl(60, 65%, 85%);
+  font-weight: 1.25rem;
+  font-weight: 600;
+  animation: slide-in-out 2s ease-in-out forwards;
+  transform: translateX(110%);
+}
+
+@keyframes slide-in-out {
+  10% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
