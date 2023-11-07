@@ -4,7 +4,7 @@ import {
   getProductsFromDB,
   productSelector,
 } from "../redux/reducers/productsReducer";
-import { Products } from "./Products.js";
+import { Products } from "../components/ProductComp.js";
 import { authSelector } from "../redux/reducers/authReducer.js";
 
 export const Home = () => {
