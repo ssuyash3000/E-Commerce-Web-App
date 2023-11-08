@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSelector } from "../redux/reducers/authReducer";
 import { Tooltip } from "react-tooltip";
 import { addProductsInCart, userSelector } from "../redux/reducers/userReducer";
+import { Link } from "react-router-dom";
 // import { setAlert } from "../redux/reducers/alertReducer";
 export const Products = (props) => {
   const { userEmail, isLoggedIn } = useSelector(authSelector);
@@ -24,7 +25,7 @@ export const Products = (props) => {
     //brand,
     category,
     //description,
-    //id,
+    id,
     //images,
     price,
     //rating,
@@ -35,18 +36,20 @@ export const Products = (props) => {
 
   return (
     <div className="productCard" style={styles.productCardStyle}>
-      <img
-        alt="product-img"
-        src={thumbnail}
-        style={{ height: 250, width: 200 }}
-      />
-      <div style={styles.productDescpStyle}>
-        <p>{title}</p>
-        <p>Price: ₹{price}</p>
-        <p>Category: {category}</p>
-      </div>
+      <Link to={`/product-page/${id}`}>
+        <img
+          alt="product-img"
+          src={thumbnail}
+          style={{ height: 250, width: 200 }}
+        />
+        <div style={styles.productDescpStyle}>
+          <p>{title}</p>
+          <p>Price: ₹{price}</p>
+          <p>Category: {category}</p>
+        </div>
+      </Link>
       {/* conditional rendering to ensure that tooltip only appears when button is
-      disabled */}
+    disabled */}
       <Tooltip id="addcart-tooltip" />
       {!isLoggedIn ? (
         <button

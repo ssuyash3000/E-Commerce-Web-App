@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { Home } from "../pages/Home";
 import { CartPage } from "../pages/CartPage";
 import { AlertComp } from "./AlertComp";
+import { ProductDetails } from "../pages/ProductDetails";
 
 export default function App() {
   // const { message } = store.getState().alertReducer;
@@ -26,6 +27,7 @@ export default function App() {
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
         { path: "/cart-page", element: <CartPage /> },
+        { path: "/product-page/:id", element: <ProductDetails /> },
         // {
         //   path: "/",
         //   children: [
