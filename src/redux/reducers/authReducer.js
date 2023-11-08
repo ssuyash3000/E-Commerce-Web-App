@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { auth, db } from "../../firebase";
+
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -75,7 +76,7 @@ const useAuthSlice = createSlice({
     setUser: (state, action) => {
       console.log(action.payload);
       state.displayName = action.payload.displayName;
-      state.userEmail = action.payload.email;
+      state.user = action.payload.email;
       state.uId = action.payload.id;
       state.isLoggedIn = true;
     },

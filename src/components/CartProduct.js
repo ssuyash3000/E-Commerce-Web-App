@@ -11,7 +11,7 @@ export const CartProduct = (props) => {
   //   const { userInfo } = useSelector(authSelector);
   const dispatch = useDispatch();
   const handleDeleteProd = () => {
-    console.log(userInfo);
+    // console.log(userInfo);
     dispatch(removeProductInCart({ userInfo, prod: props.currProd }));
   };
   const handleIncProd = () => {

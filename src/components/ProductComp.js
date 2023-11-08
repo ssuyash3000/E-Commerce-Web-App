@@ -8,12 +8,6 @@ export const Products = (props) => {
   const { userCartData } = useSelector(userSelector);
   const dispatch = useDispatch();
   const handleAddCart = () => {
-    // console.log(userEmail);
-    // const objectIndex = userCartData.findIndex(
-    //(obj) => obj.prod.id === props.currProd.id;
-    // );
-
-    // if (objectIndex === -1) {
     dispatch(
       addProductsInCart({
         userEmail,
@@ -21,13 +15,9 @@ export const Products = (props) => {
         userCartData,
       })
     );
-    // } else {
-    // console.log("Product already exists");
-
     dispatch(setAlert("This Product is already in the cart"));
-    // }
   };
-  // console.log(isLoggedIn);
+
   const {
     //brand,
     category,

@@ -19,10 +19,7 @@ export const SignUp = () => {
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const action = dispatch(await userSignUp({ ...inputState }));
-    const user = action;
-    console.log(user, " user created");
-    console.log(inputState);
+    dispatch(userSignUp({ ...inputState }));
   };
 
   return (

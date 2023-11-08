@@ -10,7 +10,7 @@ export const Navbar = () => {
       <div className="navbar">
         <nav>
           <div>
-            <img style={{ height: 45 }} src={websitelogo} />
+            <img alt="website-logo" style={{ height: 45 }} src={websitelogo} />
           </div>
 
           <NavLink
