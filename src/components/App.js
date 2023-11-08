@@ -3,13 +3,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "../pages/Login";
 import { SignUp } from "../pages/SignUp";
 import { Navbar } from "./Navbar";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { store } from "../redux/store";
-import { alertSelector } from "../redux/reducers/alertReducer";
+// import { alertSelector } from "../redux/reducers/alertReducer";
 import { useEffect } from "react";
 
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../firebase";
+// import { doc, setDoc } from "firebase/firestore";
+// import { db } from "../firebase";
 import { Home } from "../pages/Home";
 import { CartPage } from "../pages/CartPage";
 import { AlertComp } from "./AlertComp";
