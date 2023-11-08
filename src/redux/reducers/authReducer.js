@@ -85,7 +85,7 @@ const useAuthSlice = createSlice({
     setUser: (state, action) => {
       console.log(action.payload);
       state.displayName = action.payload.displayName;
-      state.user = action.payload.email;
+      state.userEmail = action.payload.email;
       state.uId = action.payload.id;
       state.isLoggedIn = true;
     },

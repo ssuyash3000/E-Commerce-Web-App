@@ -2,12 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSelector } from "../redux/reducers/authReducer";
 import { Tooltip } from "react-tooltip";
 import { addProductsInCart, userSelector } from "../redux/reducers/userReducer";
-import { setAlert } from "../redux/reducers/alertReducer";
+// import { setAlert } from "../redux/reducers/alertReducer";
 export const Products = (props) => {
   const { userEmail, isLoggedIn } = useSelector(authSelector);
   const { userCartData } = useSelector(userSelector);
   const dispatch = useDispatch();
   const handleAddCart = () => {
+    console.log(userEmail);
     dispatch(
       addProductsInCart({
         userEmail,
@@ -15,8 +16,8 @@ export const Products = (props) => {
         userCartData,
       })
     );
-    dispatch(setAlert("This Product is already in the cart"));
-    setTimeout(() => dispatch(setAlert(null)), 3000);
+    // dispatch(setAlert("This Product is already in the cart"));
+    // setTimeout(() => dispatch(setAlert(null)), 3000);
   };
 
   const {

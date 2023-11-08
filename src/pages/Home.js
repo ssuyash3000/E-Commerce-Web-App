@@ -13,7 +13,7 @@ export const Home = () => {
   const { isLoggedIn } = useSelector(authSelector);
   useEffect(() => {
     dispatch(getProductsFromDB());
-  });
+  }, [dispatch]);
   return isLoading ? (
     <h2>Loading Products... </h2>
   ) : (

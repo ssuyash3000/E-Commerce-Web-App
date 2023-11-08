@@ -17,7 +17,7 @@ export const fetchUserCart = createAsyncThunk(
   "user/fetchCart",
   (arg, thunkAPI) => {
     onSnapshot(doc(db, "user-cart", arg), (doc) => {
-      console.log(doc.data().userCart);
+      // console.log(doc.data().userCart);
       thunkAPI.dispatch(uesrAction.setUserCart(doc.data().userCart));
     });
   }
@@ -28,8 +28,12 @@ export const addProductsInCart = createAsyncThunk(
     const objectIndex = userCartData.findIndex(
       (obj) => obj.prod.id === newProd.id
     );
+
     if (objectIndex === -1) {
+      //console.log(userEmail);
       const prodRef = doc(db, "user-cart", userEmail);
+      //console.log(prodRef);
+      //console.log({ prod: newProd, count: 1 });
       await updateDoc(prodRef, {
         userCart: arrayUnion({ prod: newProd, count: 1 }),
       });
