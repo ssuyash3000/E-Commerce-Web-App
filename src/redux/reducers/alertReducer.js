@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const INITIAL_STATE = { message: "hello" };
 
-// create alert slice to handle start, pause, timer actions below
 const notificationSlice = createSlice({
   name: "notification",
   initialState: INITIAL_STATE,
@@ -31,5 +29,6 @@ const notificationSlice = createSlice({
 // export the alert reducer function here
 export const alertReducer = notificationSlice.reducer;
 // create and export alert selector function here
+export const { setAlert, resetAlert } = notificationSlice.actions;
+
 export const alertSelector = (state) => state.alertReducer;
-export const resetAlert = notificationSlice.actions.resetAlert;

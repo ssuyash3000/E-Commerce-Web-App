@@ -39,7 +39,6 @@ a,
   background-color: #afa9c4;
   position: fixed;
   justify-content: space-between;
-
 }
 .mainContent {
   padding-top: 60px;
@@ -65,7 +64,6 @@ nav a {
 }
 .alert {
   position: fixed;
-  top: 70px;
   right: 20px;
   padding: 20px;
   border-radius: 10px;

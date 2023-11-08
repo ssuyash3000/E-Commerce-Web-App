@@ -1,7 +1,10 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import cartIcon from "../assets/shopping-cart.png";
-import websitelogo from "../assets/websitelogo.png";
+
+import { websitelogo, shoppingcartLogo } from "../assets/exportAssets";
+import { useSelector } from "react-redux";
+import { userSelector } from "../redux/reducers/userReducer";
 export const Navbar = () => {
+  const { userCartData } = useSelector(userSelector);
   return (
     <div>
       <div className="navbar">
@@ -49,16 +52,18 @@ export const Navbar = () => {
             Signup
           </NavLink>
         </nav>
-
-        <div style={styles.cartIconContainer}>
-          <Link to="/Login">
-            <img style={styles.cartIcon} alt="cart-icon" src={cartIcon} />
-          </Link>
-
-          <span style={styles.cartCount} id="product-count">
-            {0}
-          </span>
-        </div>
+        <Link to="/cart-page">
+          <div style={styles.cartIconContainer}>
+            <img
+              style={styles.cartIcon}
+              alt="cart-icon"
+              src={shoppingcartLogo}
+            />
+            <span style={styles.cartCount} id="product-count">
+              {userCartData.length}
+            </span>
+          </div>
+        </Link>
       </div>
       <div className="mainContent">
         <Outlet />

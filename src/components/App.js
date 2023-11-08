@@ -11,9 +11,11 @@ import { useEffect } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { Home } from "../pages/Home";
+import { CartPage } from "../pages/CartPage";
+import { AlertComp } from "./AlertComp";
 
 export default function App() {
-  const { message } = store.getState().alertReducer;
+  // const { message } = store.getState().alertReducer;
   useEffect(() => {}, []);
   const router = createBrowserRouter([
     {
@@ -23,6 +25,7 @@ export default function App() {
         { index: true, element: <Home /> },
         { path: "/login", element: <Login /> },
         { path: "/signup", element: <SignUp /> },
+        { path: "/cart-page", element: <CartPage /> },
         // {
         //   path: "/",
         //   children: [
@@ -36,8 +39,8 @@ export default function App() {
 
   return (
     <div className="App">
-      {message && <div className="alert">{message}</div>}
       <Provider store={store}>
+        <AlertComp />
         <RouterProvider router={router} />
       </Provider>
     </div>
