@@ -9,6 +9,7 @@ import {
 import { uesrAction } from "./userReducer";
 import { fetchUserCart } from "./userReducer";
 import { doc, setDoc } from "firebase/firestore";
+import { setAlert } from "./alertReducer";
 
 const INITIAL_STATE = {
   displayName: "",
@@ -37,11 +38,14 @@ export const userLogin = createAsyncThunk(
         //setting userInfo in userReducer
         thunkAPI.dispatch(uesrAction.setUserInfo(userCredential.user.email));
         thunkAPI.dispatch(fetchUserCart(userCredential.user.email));
+        thunkAPI.dispatch(setAlert("Succesfully LoggedIn"));
+        setTimeout(() => thunkAPI.dispatch(setAlert(null)), 3000);
       })
       .catch((error) => {
-        const errorCode = error.code;
+        //const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        thunkAPI.dispatch(setAlert(errorMessage));
+        setTimeout(() => thunkAPI.dispatch(setAlert(null)), 3000);
       });
   }
 );
@@ -60,11 +64,16 @@ export const userSignUp = createAsyncThunk(
           userInfo: arg.email,
           userCart: [],
         });
+        thunkAPI.dispatch(
+          setAlert("Succesfully created user with email" + arg.email)
+        );
+        setTimeout(() => thunkAPI.dispatch(setAlert(null)), 3000);
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        thunkAPI.dispatch(setAlert(errorMessage));
+        setTimeout(() => thunkAPI.dispatch(setAlert(null)), 3000);
       });
   }
 );

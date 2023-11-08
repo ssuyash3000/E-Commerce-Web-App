@@ -16,6 +16,7 @@ export const Products = (props) => {
       })
     );
     dispatch(setAlert("This Product is already in the cart"));
+    setTimeout(() => dispatch(setAlert(null)), 3000);
   };
 
   const {
