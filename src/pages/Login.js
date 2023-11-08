@@ -2,10 +2,10 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authSelector, userLogin } from "../redux/reducers/authReducer";
-
+import { Tooltip } from "react-tooltip";
 export const Login = () => {
   const dispatch = useDispatch();
-  const { displayName } = useSelector(authSelector);
+  const { displayName, isLoggedIn } = useSelector(authSelector);
   //   console.log(user);
   const navigate = useNavigate();
   const emailRef = useRef();
@@ -24,7 +24,18 @@ export const Login = () => {
         <input ref={emailRef} type="email" required />
         <label>Enter Your Password</label>
         <input ref={passwordRef} type="password" required />
-        <button>Login</button>
+        <Tooltip id="login-tooltip" />
+        {!isLoggedIn ? (
+          <button disabled={isLoggedIn}>LogIn</button>
+        ) : (
+          <button
+            data-tooltip-id="login-tooltip"
+            data-tooltip-content="you are already loggedIn"
+            onClick={() => console.log("click")}
+            disabled={isLoggedIn}>
+            LogIn
+          </button>
+        )}
       </form>
       {displayName}
     </div>

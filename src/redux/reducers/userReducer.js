@@ -16,7 +16,7 @@ const initialState = {
 export const fetchUserCart = createAsyncThunk(
   "user/fetchCart",
   (arg, thunkAPI) => {
-    const unsub = onSnapshot(doc(db, "user-cart", arg), (doc) => {
+    onSnapshot(doc(db, "user-cart", arg), (doc) => {
       console.log(doc.data().userCart);
       thunkAPI.dispatch(uesrAction.setUserCart(doc.data().userCart));
     });
@@ -56,19 +56,19 @@ export const changeProdCountInCart = createAsyncThunk(
   async ({ userCartData, userEmail, prod, newValue }, thunkAPI) => {
     const docRef = doc(db, "user-cart", userEmail);
 
-    const objectIndex = userCartData.findIndex((obj) => obj.id === prod.id);
-    console.log(objectIndex);
+    // const objectIndex = userCartData.findIndex((obj) => obj.id === prod.id);
+    // console.log(objectIndex);
     // Create a new object with the updated field
-    const updatedObject = { ...prod, count: newValue };
-
+    const updatedObject = { prod: { ...prod }, count: newValue };
+    console.log(prod.id);
     // Create a new array with the updated object
-    const updatedArray = userCartData.map((obj, index) =>
-      index === objectIndex ? { ...updatedObject } : obj
+    const updatedArray = userCartData.map((obj) =>
+      obj.prod.id === prod.id ? { ...updatedObject } : obj
     );
 
     // Update the document
     await updateDoc(docRef, {
-      userCart: [...updatedArray],
+      userCart: updatedArray,
     });
   }
 );

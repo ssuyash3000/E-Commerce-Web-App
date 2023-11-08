@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins: wght@300; 400; 500; 600&display=swap");
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 .App {
   text-align: center;
   font-family: "Poppins", sans-serif;
-  padding-right: 20px;
+  /* padding-right: 20px; */
 }
 * {
   margin: 0;
@@ -22,13 +22,13 @@ html {
   --rt-transition-closing-delay: 0.35s;
   --rt-border-radius: 40px;
 }
-a,
+/* a,
 .btn {
   transition: all 300ms ease;
-}
-.page {
+} */
+/* .page {
   padding: 20px;
-}
+} */
 
 .navbar {
   height: 60px;
@@ -62,19 +62,6 @@ nav a {
   font-size: 1.1rem;
   font-weight: bold;
 }
-.alert {
-  position: fixed;
-  right: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: hsla(0, 0%, 39%, 0.2) 0px 2px 8px 0px;
-  background-color: hsl(60, 65%, 85%);
-  font-weight: 1.25rem;
-  font-weight: 600;
-  animation: slide-in-out 2s ease-in-out forwards;
-  transform: translateX(110%);
-}
-
 @keyframes slide-in-out {
   10% {
     transform: translateX(0);
@@ -85,4 +72,33 @@ nav a {
   100% {
     transform: translateX(150%);
   }
+}
+.alert {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: hsla(0, 0%, 39%, 0.2) 0px 2px 8px 0px;
+  background-color: hsl(60, 65%, 85%);
+  font-weight: 1.25rem;
+  font-weight: 600;
+  animation: slide-in-out 5s ease-in-out forwards;
+  transform: translateX(110%);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
 }

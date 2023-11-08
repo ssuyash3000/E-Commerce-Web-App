@@ -5,54 +5,55 @@ import {
   removeProductInCart,
   userSelector,
 } from "../redux/reducers/userReducer";
-import { authSelector } from "../redux/reducers/authReducer";
 
 export const CartProduct = (props) => {
-  const { userCartData } = useSelector(userSelector);
-  const { userEmail, isLoggedIn } = useSelector(authSelector);
+  const { userCartData, userInfo } = useSelector(userSelector);
+  //   const { userInfo } = useSelector(authSelector);
   const dispatch = useDispatch();
   const handleDeleteProd = () => {
-    console.log(userEmail);
-    dispatch(removeProductInCart({ userEmail, prod: props.currProd }));
+    console.log(userInfo);
+    dispatch(removeProductInCart({ userInfo, prod: props.currProd }));
   };
   const handleIncProd = () => {
-    console.log(userEmail);
     dispatch(
       changeProdCountInCart({
-        userEmail,
-        prod: props.currProd,
+        userEmail: userInfo,
+        prod: props.currProd.prod,
         newValue: props.currProd.count + 1,
         userCartData,
       })
     );
   };
   const handleDecProd = () => {
-    console.log(userEmail);
     dispatch(
       changeProdCountInCart({
-        userEmail,
-        prod: props.currProd,
+        userEmail: userInfo,
+        prod: props.currProd.prod,
         newValue: props.currProd.count - 1,
         userCartData,
       })
     );
   };
   const {
-    brand,
+    //brand,
     category,
-    description,
+    //description,
     discountPercentage,
-    id,
-    images,
+    //id,
+    //images,
     price,
-    rating,
-    stock,
+    //rating,
+    //stock,
     thumbnail,
     title,
   } = props.currProd.prod;
   return (
     <div className="cartProd" style={styles.productCardStyle}>
-      <img src={thumbnail} style={{ height: 250, width: 200 }} />
+      <img
+        alt="product-img"
+        src={thumbnail}
+        style={{ height: 250, width: 200 }}
+      />
       <div style={styles.productDescpStyle}>
         <p>{title}</p>
         <p>Price: ₹{price}</p>
@@ -63,15 +64,22 @@ export const CartProduct = (props) => {
         <p>Category: {category}</p>
         <p>Count: {props.currProd.count}</p>
       </div>
-      <div className="btnCtn">
+      <div className="btnCtn" style={styles.btnCtn}>
         <button style={styles.btn} onClick={() => handleIncProd()}>
-          <img src={addIcon} style={styles.btnCtnICON} />
+          <img alt="add-icon" src={addIcon} style={styles.btnCtnICON} />
         </button>
-        <button style={styles.btn} onClick={() => handleDecProd()}>
-          <img src={decIcon} style={styles.btnCtnICON} />
+        <button
+          disabled={props.currProd.count === 1}
+          style={styles.btn}
+          onClick={() => handleDecProd()}>
+          <img alt="minus-icon" src={decIcon} style={styles.btnCtnICON} />
         </button>
         <button style={styles.btn} onClick={() => handleDeleteProd()}>
-          <img src={deleteBtnIcon} style={styles.btnCtnICON} />
+          <img
+            alt="delete-icon"
+            src={deleteBtnIcon}
+            style={styles.btnCtnICON}
+          />
         </button>
       </div>
     </div>
@@ -83,9 +91,8 @@ const styles = {
     flexDirection: "column",
     height: "100%",
     width: "39%",
-    alignItems: "flex-start",
+    justifyContent: "space-between",
     margin: 10,
-    padding: 10,
     flexWrap: "nowrap",
     alignItems: "center",
   },
@@ -97,8 +104,9 @@ const styles = {
   },
   btnCtn: {
     display: "flex",
-
+    width: "100%",
     flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   btn: {
     margin: 10,

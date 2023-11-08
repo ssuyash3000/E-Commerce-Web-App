@@ -4,5 +4,5 @@ import { alertSelector } from "../redux/reducers/alertReducer";
 export const AlertComp = () => {
   const { message } = useSelector(alertSelector);
 
-  return <div className="alert">{message}</div>;
+  return message ? <div className="alert">{message}</div> : <></>;
 };

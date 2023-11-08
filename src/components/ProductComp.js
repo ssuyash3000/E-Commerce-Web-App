@@ -15,7 +15,11 @@ export const Products = (props) => {
 
     // if (objectIndex === -1) {
     dispatch(
-      addProductsInCart({ userEmail, newProd: props.currProd, userCartData })
+      addProductsInCart({
+        userEmail,
+        newProd: props.currProd,
+        userCartData,
+      })
     );
     // } else {
     // console.log("Product already exists");
@@ -25,21 +29,25 @@ export const Products = (props) => {
   };
   // console.log(isLoggedIn);
   const {
-    brand,
+    //brand,
     category,
-    description,
-    id,
-    images,
+    //description,
+    //id,
+    //images,
     price,
-    rating,
-    stock,
+    //rating,
+    //stock,
     thumbnail,
     title,
   } = props.currProd;
 
   return (
     <div className="productCard" style={styles.productCardStyle}>
-      <img src={thumbnail} style={{ height: 250, width: 200 }} />
+      <img
+        alt="product-img"
+        src={thumbnail}
+        style={{ height: 250, width: 200 }}
+      />
       <div style={styles.productDescpStyle}>
         <p>{title}</p>
         <p>Price: ₹{price}</p>
@@ -70,7 +78,6 @@ const styles = {
     flexDirection: "column",
     height: "100%",
     width: "19%",
-    alignItems: "flex-start",
     margin: 10,
     padding: 10,
     flexWrap: "nowrap",
