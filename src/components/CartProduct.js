@@ -12,7 +12,9 @@ export const CartProduct = (props) => {
   const dispatch = useDispatch();
   const handleDeleteProd = () => {
     // console.log(userInfo);
-    dispatch(removeProductInCart({ userInfo, prod: props.currProd }));
+    dispatch(
+      removeProductInCart({ userEmail: userInfo, prod: props.currProd })
+    );
   };
   const handleIncProd = () => {
     dispatch(
